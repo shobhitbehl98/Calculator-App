@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    EditText e1, e2;
+    TextView t;
+    double n1, n2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,105 +85,95 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public boolean getNumbers() {
+        e1 = (EditText) findViewById(R.id.num1);
+        e2 = (EditText) findViewById(R.id.num2);
+        t = (TextView) findViewById(R.id.answer);
+        String s1 = e1.getText().toString();
+        String s2 = e2.getText().toString();
+        if ((s1.equals(null) && s2.equals(null))
+                || (s1.equals("") && s2.equals(""))) {
+            String result = "Please enter a value";
+            t.setText(result);
+            return false;
+        } else {
+            n1 = Double.parseDouble(s1);
+            n2 = Double.parseDouble(s2);
+        }
+        return true;
+    }
 
     public void addition(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        EditText e2=(EditText)findViewById(R.id.num2);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double n2=Double.parseDouble(e2.getText().toString());
-        double sum=n1+n2;
-        String result=Double.toString(sum);
-        t.setText(result);
+       if(getNumbers()){
+           double sum=n1+n2;
+           String result=Double.toString(sum);
+           t.setText(result);
+       }
     }
     public void sine(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double c=Math.toRadians(n1);
-        double sum= Math.sin(c);
-        sum=(double)Math.round(sum * 1000d) / 1000d;
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=Math.sin(Math.toRadians(n1));
+            sum=(double)Math.round(sum * 1000d) / 1000d;
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void cosine(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double c=Math.toRadians(n1);
-        double sum= Math.cos(c);
-        sum=(double)Math.round(sum * 1000d) / 1000d;
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=Math.cos(Math.toRadians(n1));
+            sum=(double)Math.round(sum * 1000d) / 1000d;
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void tangent(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double c=Math.toRadians(n1);
-        double sum=Math.tan(c);
-        sum=(double)Math.round(sum * 1000d) / 1000d;
-        if(n1==90||n1==270){
-            t.setText("infinity");
-        }else {
-            String result = Double.toString(sum);
+        if(getNumbers()){
+            double sum=Math.tan(Math.toRadians(n1));
+            sum=(double)Math.round(sum * 1000d) / 1000d;
+            String result=Double.toString(sum);
             t.setText(result);
         }
     }
     public void ln(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double sum=Math.log(n1);
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=Math.log(n1);
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void log(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double sum=Math.log10(n1);
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=Math.log10(n1);
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void subtraction(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        EditText e2=(EditText)findViewById(R.id.num2);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double n2=Double.parseDouble(e2.getText().toString());
-        double sub=n1-n2;
-        String result=Double.toString(sub);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=n1-n2;
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void product(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        EditText e2=(EditText)findViewById(R.id.num2);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double n2=Double.parseDouble(e2.getText().toString());
-        double sum=n1*n2;
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=n1*n2;
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void division(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        EditText e2=(EditText)findViewById(R.id.num2);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double n2=Double.parseDouble(e2.getText().toString());
-        double sum=n1/n2;
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=n1/n2;
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
     public void power(View v){
-        EditText e1=(EditText)findViewById(R.id.num1);
-        EditText e2=(EditText)findViewById(R.id.num2);
-        TextView t=(TextView)findViewById(R.id.answer);
-        double n1=Double.parseDouble(e1.getText().toString());
-        double n2=Double.parseDouble(e2.getText().toString());
-        double sum=Math.pow(n1,n2);
-        String result=Double.toString(sum);
-        t.setText(result);
+        if(getNumbers()){
+            double sum=Math.pow(n1,n2);
+            String result=Double.toString(sum);
+            t.setText(result);
+        }
     }
 }
